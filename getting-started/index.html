@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/images/gobackup.svg">
+    <title>Getting Started</title>
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="/javascripts/site.js"></script>
+  </head>
+  <body class="main">
+    <header>
+      <h1>
+        <a href="/" class="logo"><img alt="GoBackup" src="/images/gobackup.svg" /></a>
+        <a href="/">GoBackup</a>
+      </h1>
+      <ul>
+        <li><a href="/installation">Installation</a></li>
+        <li><a href="/release-notes">Release Notes</a></li>
+        <li><a href="/getting-started">Getting Started</a></li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/configuration">Configuration</a>
+          <ul>
+            <li>
+              <span>Databases</span>
+              <ul>
+                <li><a href="/configuration/databases/mysql">MySQL</a></li>
+                <li><a href="/configuration/databases/postgresql">PostgreSQL</a></li>
+                <li><a href="/configuration/databases/mongodb">MongoDB</a></li>
+                <li><a href="/configuration/databases/redis">Redis</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="/configuration/archive">Archive</a>
+            </li>
+
+            <li>
+              <span>Compressor</span>
+              <ul>
+                <li><a href="/configuration/compressor/tgz">Tgz</a></a>
+              </ul>
+            </li>
+
+            <li>
+              <span>Storages</span>
+              <ul>
+                <li><a href="/configuration/storages/local">Local</a></li>
+                <li><a href="/configuration/storages/ftp">FTP</a></li>
+                <li><a href="/configuration/storages/scp">SCP</a></li>
+                <li><a href="/configuration/storages/s3">AWS S3</a></li>
+                <li><a href="/configuration/storages/oss">Aliyun OSS</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </header>
+    <div class="content">
+      <h1>Getting Started</h1>
+
+<p>The following is a simple walk-through to familiarize you with how GoBackup works.</p>
+
+<p>If you have not yet installed GoBackup, see the <a href="/installation">Installation</a> page.</p>
+
+<h2>Generating config file</h2>
+
+<pre><code class="bash">$ touch ~/.gobackup/gobackup.yml
+</code></pre>
+
+<blockquote>
+<p>NOTE: Or put config file in there: <code>/etc/gobackup/gobackup.yml</code></p>
+</blockquote>
+
+<p>And then edit config file like this:</p>
+
+<pre><code class="yml">models:
+  my_app:
+    compress_with:
+      type: tgz
+    store_with:
+      type: local
+      path: /data/backups
+    databases:
+      my_app:
+        database: my_app_production
+        type: mysql
+        host: localhost
+        port: 3306
+        username: root
+    archive:
+      includes:
+        - /var/www/my_app/uploads
+        - /var/www/my_app/shared/ssl
+</code></pre>
+
+<h2>Run backup</h2>
+
+<pre><code class="bash">$ gobackup perform
+</code></pre>
+
+<pre><code>2017/09/08 06:47:36 ======== my_app ========
+2017/09/08 06:47:36 WorkDir: /tmp/gobackup/1504853256396379166
+
+2017/09/08 06:47:36 ------------- Databases --------------
+2017/09/08 06:47:36 =&gt; database | MySQL: my_app
+2017/09/08 06:47:36 Dump mysql dump to /tmp/gobackup/1504853256396379166/mysql/my_app/my_app_production.sql
+2017/09/08 06:47:36 ----------- End databases ------------
+
+2017/09/08 06:47:36 ------------- Compressor --------------
+2017/09/08 06:47:36 =&gt; Compress with Tgz...
+2017/09/08 06:47:39 -&gt; /tmp/gobackup/2017.09.08.06.47.39.tar.gz
+2017/09/08 06:47:39 ----------- End Compressor ------------
+
+2017/09/08 06:47:39 =&gt; storage | Local
+2017/09/08 06:47:39 -&gt; Copying...
+2017/09/08 06:47:39 -&gt; /data/backups/my_app/2017.09.08.06.47.39.tar.gz
+
+2017/09/08 06:48:04 Cleanup temp dir...
+2017/09/08 06:48:04 ======= End my_app =======
+</code></pre>
+
+<h2>Check your backup files</h2>
+
+<pre><code>$ ls /data/backups/my_app/
+</code></pre>
+
+    </div>
+  </body>
+</html>

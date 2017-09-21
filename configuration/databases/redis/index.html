@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/images/gobackup.svg">
+    <title>Configuration - Redis database</title>
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="/javascripts/site.js"></script>
+  </head>
+  <body class="main">
+    <header>
+      <h1>
+        <a href="/" class="logo"><img alt="GoBackup" src="/images/gobackup.svg" /></a>
+        <a href="/">GoBackup</a>
+      </h1>
+      <ul>
+        <li><a href="/installation">Installation</a></li>
+        <li><a href="/release-notes">Release Notes</a></li>
+        <li><a href="/getting-started">Getting Started</a></li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/configuration">Configuration</a>
+          <ul>
+            <li>
+              <span>Databases</span>
+              <ul>
+                <li><a href="/configuration/databases/mysql">MySQL</a></li>
+                <li><a href="/configuration/databases/postgresql">PostgreSQL</a></li>
+                <li><a href="/configuration/databases/mongodb">MongoDB</a></li>
+                <li><a href="/configuration/databases/redis">Redis</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="/configuration/archive">Archive</a>
+            </li>
+
+            <li>
+              <span>Compressor</span>
+              <ul>
+                <li><a href="/configuration/compressor/tgz">Tgz</a></a>
+              </ul>
+            </li>
+
+            <li>
+              <span>Storages</span>
+              <ul>
+                <li><a href="/configuration/storages/local">Local</a></li>
+                <li><a href="/configuration/storages/ftp">FTP</a></li>
+                <li><a href="/configuration/storages/scp">SCP</a></li>
+                <li><a href="/configuration/storages/s3">AWS S3</a></li>
+                <li><a href="/configuration/storages/oss">Aliyun OSS</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </header>
+    <div class="content">
+      <h1>Redis database</h1>
+
+<p>GoBackup use <code>redis-cli</code> utility to export MySQL database into a <code>dump.db</code> file.</p>
+
+<h2>Database config keys</h2>
+
+<p><code>type: mysql</code></p>
+
+<ul>
+<li><code>mode</code> - Redis dump mode, default: <code>sync</code>
+
+<ul>
+<li><code>sync</code> - For remote Redis server use sync to export.</li>
+<li><code>copy</code> - For local Redis server use copy, just copy Redis <code>dump.db</code></li>
+</ul></li>
+<li><code>host</code> - MySQL server host, default: <code>127.0.0.1</code></li>
+<li><code>port</code> - MySQL server port, default: <code>6379</code></li>
+<li><code>invoke_save</code> - Invoke save before backup, default: <code>true</code></li>
+<li><code>password</code> - If your Redis server need, default: ``</li>
+<li><code>rdb_path</code> - <code>mode: copy</code> need special this config, default: <code>/var/lib/redis/dump.rdb</code></li>
+</ul>
+
+<p><a href="https://github.com/huacnlee/gobackup/blob/master/database/redis.go">https://github.com/huacnlee/gobackup/blob/master/database/redis.go</a></p>
+
+    </div>
+  </body>
+</html>

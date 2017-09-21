@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/images/gobackup.svg">
+    <title>Configuration</title>
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="/javascripts/site.js"></script>
+  </head>
+  <body class="main">
+    <header>
+      <h1>
+        <a href="/" class="logo"><img alt="GoBackup" src="/images/gobackup.svg" /></a>
+        <a href="/">GoBackup</a>
+      </h1>
+      <ul>
+        <li><a href="/installation">Installation</a></li>
+        <li><a href="/release-notes">Release Notes</a></li>
+        <li><a href="/getting-started">Getting Started</a></li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/configuration">Configuration</a>
+          <ul>
+            <li>
+              <span>Databases</span>
+              <ul>
+                <li><a href="/configuration/databases/mysql">MySQL</a></li>
+                <li><a href="/configuration/databases/postgresql">PostgreSQL</a></li>
+                <li><a href="/configuration/databases/mongodb">MongoDB</a></li>
+                <li><a href="/configuration/databases/redis">Redis</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="/configuration/archive">Archive</a>
+            </li>
+
+            <li>
+              <span>Compressor</span>
+              <ul>
+                <li><a href="/configuration/compressor/tgz">Tgz</a></a>
+              </ul>
+            </li>
+
+            <li>
+              <span>Storages</span>
+              <ul>
+                <li><a href="/configuration/storages/local">Local</a></li>
+                <li><a href="/configuration/storages/ftp">FTP</a></li>
+                <li><a href="/configuration/storages/scp">SCP</a></li>
+                <li><a href="/configuration/storages/s3">AWS S3</a></li>
+                <li><a href="/configuration/storages/oss">Aliyun OSS</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </header>
+    <div class="content">
+      <h1>Configuration</h1>
+
+<p>GoBackup will read config from follow paths:</p>
+
+<ul>
+<li><code>~/.gobackup/gobackup.yml</code></li>
+<li><code>/etc/gobackup.yml</code></li>
+</ul>
+
+<p>You must use <a href="http://yaml.org/">YAML</a> format.</p>
+
+<h2>Full config struct</h2>
+
+<pre><code class="yml"># root
+models:
+  # special a model name
+  model_name1:
+    # config compress
+    compress_with:
+      # compress type
+      type: tgz
+    # storage
+    store_with:
+      # storage type
+      type: ftp
+      # other config for this storage type
+      host: ftp.your-host.com
+      username: ...
+      password: ...
+    # database source support multiple instance
+    databases:
+      # special a database name
+      my_app1:
+        # database type
+        type: mysql
+        # other config for this database type
+        host: localhost
+        database: my_app_production
+        username: root
+      my_app_redis1:
+        type: redis
+        host: localhost
+        port: 6379
+        mode: sync
+      my_app_redis2:
+        type: redis
+        host: localhost
+        port: 6380
+        mode: sync
+    # archive config
+    archive:
+      # archive multiple files / directoies
+      includes:
+        - /home/git/.ssh/
+        - /etc/mysql/my.conf
+        - /etc/nginx/nginx.conf
+        - /etc/nginx/conf.d
+        - /etc/redis/redis.conf
+        - /etc/logrotate.d/
+      # path will exclude
+      excludes:
+        - /home/ubuntu/.ssh/known_hosts
+        - /etc/logrotate.d/syslog
+  # another model
+  my_app2:
+    compress_with:
+      type: tgz
+    store_with:
+      type: local
+      path: /data/backups/my_app2
+    databases:
+      ...
+</code></pre>
+
+    </div>
+  </body>
+</html>

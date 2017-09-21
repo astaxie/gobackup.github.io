@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="/images/gobackup.svg">
+    <title>GoBackup</title>
+    <link href="/stylesheets/site.css" rel="stylesheet" />
+    <script src="/javascripts/site.js"></script>
+  </head>
+  <body class="main-home">
+    <header>
+      <h1>
+        <a href="/" class="logo"><img alt="GoBackup" src="/images/gobackup.svg" /></a>
+        <a href="/">GoBackup</a>
+      </h1>
+      <ul>
+        <li><a href="/installation">Installation</a></li>
+        <li><a href="/release-notes">Release Notes</a></li>
+        <li><a href="/getting-started">Getting Started</a></li>
+      </ul>
+      <ul>
+        <li>
+          <a href="/configuration">Configuration</a>
+          <ul>
+            <li>
+              <span>Databases</span>
+              <ul>
+                <li><a href="/configuration/databases/mysql">MySQL</a></li>
+                <li><a href="/configuration/databases/postgresql">PostgreSQL</a></li>
+                <li><a href="/configuration/databases/mongodb">MongoDB</a></li>
+                <li><a href="/configuration/databases/redis">Redis</a></li>
+              </ul>
+            </li>
+
+            <li>
+              <a href="/configuration/archive">Archive</a>
+            </li>
+
+            <li>
+              <span>Compressor</span>
+              <ul>
+                <li><a href="/configuration/compressor/tgz">Tgz</a></a>
+              </ul>
+            </li>
+
+            <li>
+              <span>Storages</span>
+              <ul>
+                <li><a href="/configuration/storages/local">Local</a></li>
+                <li><a href="/configuration/storages/ftp">FTP</a></li>
+                <li><a href="/configuration/storages/scp">SCP</a></li>
+                <li><a href="/configuration/storages/s3">AWS S3</a></li>
+                <li><a href="/configuration/storages/oss">Aliyun OSS</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+
+    </header>
+    <div class="content">
+      <div class="welcome">
+  <img class="logo" src="/images/gobackup.svg" alt="GoBackup" />
+  <h1>GoBackup</h1>
+  <h2>Simple tool for backup your databases, files to cloud storages.</h2>
+</div>
+
+<p>GoBackup is a fullstack backup tool design for web servers similar with <a href="https://github.com/backup/backup">backup/backup</a>, work with Crontab to backup automatically.</p>
+
+<p>You can write a config file, run <code>gobackup perform</code> command by once to dump database as file, archive config files, and then package them into a single file.</p>
+
+<p>It&#39;s allow you store the backup file to local, FTP or other cloud storages.</p>
+
+<hr>
+
+<p>GoBackup 是一个类似 backup/backup 的一站式备份工具，为中小型服务器／个人服务器而设计，配合 Crontab 以实现定时备份的目的。</p>
+
+<p>使用 GoBackup 你可以通过一个简单的配置文件，一次（执行一个命令）将服务器上重要的（数据库、配置文件）东西导出、打包压缩，并备份到指定目的地（如：本地路径、FTP、云存储...）。</p>
+
+<h2>Features</h2>
+
+<ul>
+<li>No deprecations.</li>
+<li>Multiple Databases source support.</li>
+<li>Multiple Storage type support.</li>
+<li>Archive paths or files into a tar.</li>
+</ul>
+
+<h3>Databases</h3>
+
+<ul>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>Redis - <code>mode: sync/copy</code></li>
+<li>MongoDB</li>
+</ul>
+
+<h3>Archive</h3>
+
+<p>Use <code>tar</code> command to archive many file or path into a <code>.tar</code> file.</p>
+
+<h3>Compressor</h3>
+
+<ul>
+<li>Tgz - <code>.tar.gz</code></li>
+</ul>
+
+<h3>Storages</h3>
+
+<ul>
+<li>Local</li>
+<li>FTP</li>
+<li>SCP - Upload via SSH copy</li>
+<li><a href="https://aws.amazon.com/s3/">Amazon S3</a></li>
+<li><a href="https://www.aliyun.com/product/oss">Aliyun OSS</a></li>
+</ul>
+
+    </div>
+  </body>
+</html>
