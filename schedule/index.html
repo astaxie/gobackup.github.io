@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="/images/gobackup.png">
-    <title>GoBackup - MongoDB database</title>
+    <title>GoBackup - Backup Schedule</title>
     <link href="/stylesheets/site.css" rel="stylesheet" />
     <script src="/javascripts/site.js"></script>
   </head>
@@ -73,25 +73,23 @@
 
     </header>
     <div class="content">
-      <h1>MongoDB database</h1>
+      <h1>Backup Schedule</h1>
 
-<p>GoBackup use <code>mongodump</code> utility to backup MongoDB database files.</p>
+<p>You may want run backup in scheduled, you need <a href="https://en.wikipedia.org/wiki/Cron">Crontab</a>:</p>
 
-<h2>Database config keys</h2>
+<pre><code class="bash">$ crontab -e
+</code></pre>
 
-<p><code>type: mongodb</code></p>
+<p>Append this line and save it:</p>
 
-<ul>
-<li><code>host</code> - server host, default: <code>127.0.0.1</code></li>
-<li><code>port</code> - server port, default: <code>27017</code></li>
-<li><code>database</code> - database name</li>
-<li><code>username</code> - default: <code>root</code></li>
-<li><code>password</code></li>
-<li><code>authdb</code> - authenticationDatabase arg or <code>mongodump</code></li>
-<li><code>oplog</code> - oplog arg or <code>mongodump</code>, default: <code>false</code></li>
-</ul>
+<pre><code>0 0 * * * /usr/local/bin/gobackup perform &gt;&gt; ~/.gobackup/gobackup.log
+</code></pre>
 
-<p><a href="https://github.com/huacnlee/gobackup/blob/master/database/mongodb.go">https://github.com/huacnlee/gobackup/blob/master/database/mongodb.go</a></p>
+<blockquote>
+<p>0 0 * * * means run at 0:00 AM, every day.</p>
+</blockquote>
+
+<p>And after a day, you can check up the execute status by ~/.gobackup/gobackup.log.</p>
 
     </div>
   </body>

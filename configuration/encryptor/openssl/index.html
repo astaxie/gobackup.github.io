@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="/images/gobackup.png">
-    <title>GoBackup - MongoDB database</title>
+    <title>GoBackup - Encrypt with OpenSSL</title>
     <link href="/stylesheets/site.css" rel="stylesheet" />
     <script src="/javascripts/site.js"></script>
   </head>
@@ -73,25 +73,31 @@
 
     </header>
     <div class="content">
-      <h1>MongoDB database</h1>
+      <h1>Encrypt with OpenSSL</h1>
 
-<p>GoBackup use <code>mongodump</code> utility to backup MongoDB database files.</p>
+<p>Create a password-protected backup file with <code>my_password</code> as the password.</p>
 
-<h2>Database config keys</h2>
+<pre><code class="yml">encrypt_with:
+  type: openssl
+  password: my_password
+  # (enabled by default) improves the security.
+  salt: true
+  # makes encrypted backups readable in text editors, emails, etc.
+  base64: false
+</code></pre>
 
-<p><code>type: mongodb</code></p>
+<p>This will encrypt your backup file using OpenSSL <code>aes-256-cbc</code>.</p>
 
-<ul>
-<li><code>host</code> - server host, default: <code>127.0.0.1</code></li>
-<li><code>port</code> - server port, default: <code>27017</code></li>
-<li><code>database</code> - database name</li>
-<li><code>username</code> - default: <code>root</code></li>
-<li><code>password</code></li>
-<li><code>authdb</code> - authenticationDatabase arg or <code>mongodump</code></li>
-<li><code>oplog</code> - oplog arg or <code>mongodump</code>, default: <code>false</code></li>
-</ul>
+<h2>Decrypting your backup file</h2>
 
-<p><a href="https://github.com/huacnlee/gobackup/blob/master/database/mongodb.go">https://github.com/huacnlee/gobackup/blob/master/database/mongodb.go</a></p>
+<p>To decrypt your backup, use the following command:</p>
+
+<pre><code class="bash">$ openssl aes-256-cbc -d -base64 -in my_backup.tar.gz.enc -out my_backup.tar.gz
+</code></pre>
+
+<p><code>-base64</code> is only required if you used <code>base64: true</code>.</p>
+
+<p>You will be prompted for your password.</p>
 
     </div>
   </body>
