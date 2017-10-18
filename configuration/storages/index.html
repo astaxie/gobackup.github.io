@@ -5,7 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" type="image/png" href="/images/gobackup.png">
-    <title>GoBackup - Configuration - MySQL database</title>
+    <title>GoBackup - Storage</title>
     <meta name="description" content="GoBackup is a simple tool for backup your databases, files to cloud storages.">
     <link href="/stylesheets/site.css" rel="stylesheet" />
     <script src="/javascripts/site.js"></script>
@@ -74,29 +74,36 @@
 
     </header>
     <div class="content">
-      <h1>MySQL database</h1>
+      <h1>Storages</h1>
 
-<p>GoBackup use <code>mysqldump</code> utility to export MySQL database into a <code>.sql</code> file.</p>
-
-<p>So you need install <code>mysql-client</code> first.</p>
-
-<pre><code class="bash">$ sudo apt-get install mysql-client
-</code></pre>
-
-<h2>Database config keys</h2>
-
-<p><code>type: mysql</code></p>
+<p>GoBackup includes the following Storages:</p>
 
 <ul>
-<li><code>host</code> - MySQL server host, default: <code>localhost</code></li>
-<li><code>port</code> - MySQL server port, default: <code>3306</code></li>
-<li><code>database</code> - database name</li>
-<li><code>username</code> - default: <code>root</code></li>
-<li><code>password</code></li>
-<li><code>additional_options</code> - Additional options for mysqldump utility, for example: <code>--single-transaction --quick</code></li>
+<li><a href="local">Local</a></li>
+<li><a href="ftp">FTP</a></li>
+<li><a href="scp">SCP</a></li>
+<li><a href="s3">AWS S3</a></li>
+<li><a href="oss">Aliyun OSS</a></li>
 </ul>
 
-<p><a href="https://github.com/huacnlee/gobackup/blob/master/database/mysql.go">https://github.com/huacnlee/gobackup/blob/master/database/mysql.go</a></p>
+<h2>Cycling Stored Backups</h2>
+
+<p>Each Storage supports the keep setting, which specifies how many backups to keep at this location.</p>
+
+<p>For example:</p>
+
+<pre><code class="yml">models:
+  my_app:
+    store_with:
+      type: local
+      keep: 10
+</code></pre>
+
+<p><strong><code>keep</code> as a Number</strong></p>
+
+<p>If <code>keep</code> have specified and once the <code>keep</code> limit  has been reached, the older backup files will be removed.</p>
+
+<p>GoBackup will save the backup histories in <code>~/.gobackup/cycler.json</code>.</p>
 
     </div>
   </body>
