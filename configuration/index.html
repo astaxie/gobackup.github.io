@@ -86,68 +86,66 @@
 <p>You must use <a href="http://yaml.org/">YAML</a> format.</p>
 
 <h2>Full config struct</h2>
-
-<pre><code class="yml"># root
-models:
-  # special a model name
-  model_name1:
-    # config compress
-    compress_with:
-      # compress type
-      type: tgz
-    # storage
-    store_with:
-      # storage type
-      type: ftp
-      # other config for this storage type
-      host: ftp.your-host.com
-      username: ...
-      password: ...
-    # database source support multiple instance
-    databases:
-      # special a database name
-      my_app1:
-        # database type
-        type: mysql
-        # other config for this database type
-        host: localhost
-        database: my_app_production
-        username: root
-      my_app_redis1:
-        type: redis
-        host: localhost
-        port: 6379
-        mode: sync
-      my_app_redis2:
-        type: redis
-        host: localhost
-        port: 6380
-        mode: sync
-    # archive config
-    archive:
-      # archive multiple files / directoies
-      includes:
-        - /home/git/.ssh/
-        - /etc/mysql/my.conf
-        - /etc/nginx/nginx.conf
-        - /etc/nginx/conf.d
-        - /etc/redis/redis.conf
-        - /etc/logrotate.d/
-      # path will exclude
-      excludes:
-        - /home/ubuntu/.ssh/known_hosts
-        - /etc/logrotate.d/syslog
-  # another model
-  my_app2:
-    compress_with:
-      type: tgz
-    store_with:
-      type: local
-      path: /data/backups/my_app2
-    databases:
-      ...
-</code></pre>
-
+<div class="highlight"><pre class="highlight yaml"><code><span class="c1"># root</span>
+<span class="na">models</span><span class="pi">:</span>
+  <span class="c1"># special a model name</span>
+  <span class="na">model_name1</span><span class="pi">:</span>
+    <span class="c1"># config compress</span>
+    <span class="na">compress_with</span><span class="pi">:</span>
+      <span class="c1"># compress type</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">tgz</span>
+    <span class="c1"># storage</span>
+    <span class="na">store_with</span><span class="pi">:</span>
+      <span class="c1"># storage type</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">ftp</span>
+      <span class="c1"># other config for this storage type</span>
+      <span class="na">host</span><span class="pi">:</span> <span class="s">ftp.your-host.com</span>
+      <span class="na">username</span><span class="pi">:</span> <span class="s">...</span>
+      <span class="na">password</span><span class="pi">:</span> <span class="s">...</span>
+    <span class="c1"># database source support multiple instance</span>
+    <span class="na">databases</span><span class="pi">:</span>
+      <span class="c1"># special a database name</span>
+      <span class="na">my_app1</span><span class="pi">:</span>
+        <span class="c1"># database type</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">mysql</span>
+        <span class="c1"># other config for this database type</span>
+        <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+        <span class="na">database</span><span class="pi">:</span> <span class="s">my_app_production</span>
+        <span class="na">username</span><span class="pi">:</span> <span class="s">root</span>
+      <span class="na">my_app_redis1</span><span class="pi">:</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">redis</span>
+        <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+        <span class="na">port</span><span class="pi">:</span> <span class="s">6379</span>
+        <span class="na">mode</span><span class="pi">:</span> <span class="s">sync</span>
+      <span class="na">my_app_redis2</span><span class="pi">:</span>
+        <span class="na">type</span><span class="pi">:</span> <span class="s">redis</span>
+        <span class="na">host</span><span class="pi">:</span> <span class="s">localhost</span>
+        <span class="na">port</span><span class="pi">:</span> <span class="s">6380</span>
+        <span class="na">mode</span><span class="pi">:</span> <span class="s">sync</span>
+    <span class="c1"># archive config</span>
+    <span class="na">archive</span><span class="pi">:</span>
+      <span class="c1"># archive multiple files / directoies</span>
+      <span class="na">includes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">/home/git/.ssh/</span>
+        <span class="pi">-</span> <span class="s">/etc/mysql/my.conf</span>
+        <span class="pi">-</span> <span class="s">/etc/nginx/nginx.conf</span>
+        <span class="pi">-</span> <span class="s">/etc/nginx/conf.d</span>
+        <span class="pi">-</span> <span class="s">/etc/redis/redis.conf</span>
+        <span class="pi">-</span> <span class="s">/etc/logrotate.d/</span>
+      <span class="c1"># path will exclude</span>
+      <span class="na">excludes</span><span class="pi">:</span>
+        <span class="pi">-</span> <span class="s">/home/ubuntu/.ssh/known_hosts</span>
+        <span class="pi">-</span> <span class="s">/etc/logrotate.d/syslog</span>
+  <span class="c1"># another model</span>
+  <span class="na">my_app2</span><span class="pi">:</span>
+    <span class="na">compress_with</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">tgz</span>
+    <span class="na">store_with</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">local</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s">/data/backups/my_app2</span>
+    <span class="na">databases</span><span class="pi">:</span>
+      <span class="s">...</span>
+</code></pre></div>
     </div>
   </body>
 </html>

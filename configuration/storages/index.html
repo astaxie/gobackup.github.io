@@ -91,14 +91,12 @@
 <p>Each Storage supports the keep setting, which specifies how many backups to keep at this location.</p>
 
 <p>For example:</p>
-
-<pre><code class="yml">models:
-  my_app:
-    store_with:
-      type: local
-      keep: 10
-</code></pre>
-
+<div class="highlight"><pre class="highlight yaml"><code><span class="na">models</span><span class="pi">:</span>
+  <span class="na">my_app</span><span class="pi">:</span>
+    <span class="na">store_with</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">local</span>
+      <span class="na">keep</span><span class="pi">:</span> <span class="s">10</span>
+</code></pre></div>
 <p><strong><code>keep</code> as a Number</strong></p>
 
 <p>If <code>keep</code> have specified and once the <code>keep</code> limit  has been reached, the older backup files will be removed.</p>

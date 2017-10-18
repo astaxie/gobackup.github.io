@@ -77,25 +77,21 @@
       <h1>Encrypt with OpenSSL</h1>
 
 <p>Create a password-protected backup file with <code>my_password</code> as the password.</p>
-
-<pre><code class="yml">encrypt_with:
-  type: openssl
-  password: my_password
-  # (enabled by default) improves the security.
-  salt: true
-  # makes encrypted backups readable in text editors, emails, etc.
-  base64: false
-</code></pre>
-
+<div class="highlight"><pre class="highlight yaml"><code><span class="na">encrypt_with</span><span class="pi">:</span>
+  <span class="na">type</span><span class="pi">:</span> <span class="s">openssl</span>
+  <span class="na">password</span><span class="pi">:</span> <span class="s">my_password</span>
+  <span class="c1"># (enabled by default) improves the security.</span>
+  <span class="na">salt</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="c1"># makes encrypted backups readable in text editors, emails, etc.</span>
+  <span class="na">base64</span><span class="pi">:</span> <span class="no">false</span>
+</code></pre></div>
 <p>This will encrypt your backup file using OpenSSL <code>aes-256-cbc</code>.</p>
 
 <h2>Decrypting your backup file</h2>
 
 <p>To decrypt your backup, use the following command:</p>
-
-<pre><code class="bash">$ openssl aes-256-cbc -d -base64 -in my_backup.tar.gz.enc -out my_backup.tar.gz
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>openssl aes-256-cbc <span class="nt">-d</span> <span class="nt">-base64</span> <span class="nt">-in</span> my_backup.tar.gz.enc <span class="nt">-out</span> my_backup.tar.gz
+</code></pre></div>
 <p><code>-base64</code> is only required if you used <code>base64: true</code>.</p>
 
 <p>You will be prompted for your password.</p>

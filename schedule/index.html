@@ -77,15 +77,11 @@
       <h1>Backup Schedule</h1>
 
 <p>You may want run backup in scheduled, you need <a href="https://en.wikipedia.org/wiki/Cron">Crontab</a>:</p>
-
-<pre><code class="bash">$ crontab -e
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell"><code><span class="nv">$ </span>crontab <span class="nt">-e</span>
+</code></pre></div>
 <p>Append this line and save it:</p>
-
-<pre><code>0 0 * * * /usr/local/bin/gobackup perform &gt;&gt; ~/.gobackup/gobackup.log
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>0 0 * * * /usr/local/bin/gobackup perform &gt;&gt; ~/.gobackup/gobackup.log
+</code></pre></div>
 <blockquote>
 <p>0 0 * * * means run at 0:00 AM, every day.</p>
 </blockquote>
