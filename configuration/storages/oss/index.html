@@ -92,7 +92,19 @@
 <li><code>max_retries</code> - Max retries, default: 3</li>
 </ul>
 
-<p><a href="https://github.com/huacnlee/gobackup/blob/master/storages/oss.go">https://github.com/huacnlee/gobackup/blob/master/storages/oss.go</a></p>
+<h3>For example:</h3>
+<div class="highlight"><pre class="highlight yaml"><code><span class="na">models</span><span class="pi">:</span>
+  <span class="na">demo</span><span class="pi">:</span>
+    <span class="na">store_with</span><span class="pi">:</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s">oss</span>
+      <span class="na">keep</span><span class="pi">:</span> <span class="s">14</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s">gobackups</span>
+      <span class="na">bucket</span><span class="pi">:</span> <span class="s">my-backup-bucket</span>
+      <span class="na">endpoint</span><span class="pi">:</span> <span class="s">oss-cn-shanghai.aliyuncs.com</span>
+      <span class="na">access_key_id</span><span class="pi">:</span> <span class="s">A7tjOA7MoXHJw9KqGixKQ</span>
+      <span class="na">access_key_secret</span><span class="pi">:</span> <span class="s">xKba4ajT90+R+x6zZeg7wQ</span>
+</code></pre></div>
+<p><a href="https://github.com/huacnlee/gobackup/blob/master/storage/oss.go">https://github.com/huacnlee/gobackup/blob/master/storage/oss.go</a></p>
 
     </div>
   </body>
