@@ -78,6 +78,24 @@
 
 <p>GoBackup use <code>pg_dump</code> utility to backup PostgreSQL database into a <code>.sql</code> file.</p>
 
+<p>If your host not have <code>pg_dump</code> you need install it first.</p>
+
+<blockquote>
+<p>NOTE: PostgreSQL requirement pg_dump have a equal/higher version with server, so if your PostgreSQL server,you can follow this guides to install higher version of <code>postgresql-contrib</code>:</p>
+</blockquote>
+
+<ul>
+<li>Ubuntu: <a href="https://www.postgresql.org/download/linux/ubuntu/">https://www.postgresql.org/download/linux/ubuntu/</a></li>
+<li>Red Hat / CentOS: <a href="https://www.postgresql.org/download/linux/redhat/">https://www.postgresql.org/download/linux/redhat/</a></li>
+</ul>
+
+<p>Follow the guides to <strong>Install the repository RPM</strong>, and then run:</p>
+<div class="highlight"><pre class="highlight shell"><code><span class="c"># For Ubuntu</span>
+<span class="nv">$ </span><span class="nb">sudo </span>apt-get install postgresql11-contrib
+
+<span class="c"># For Red Hat</span>
+<span class="nv">$ </span><span class="nb">sudo </span>yum install postgresql11-contrib
+</code></pre></div>
 <h2>Database config keys</h2>
 
 <p><code>type: postgresql</code></p>
