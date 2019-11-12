@@ -76,11 +76,11 @@
     <div class="content">
       <h1>Redis database</h1>
 
-<p>GoBackup use <code>redis-cli</code> utility to export MySQL database into a <code>dump.db</code> file.</p>
+<p>GoBackup use <code>redis-cli</code> utility to export Redis database into a <code>dump.db</code> file.</p>
 
 <h2>Database config keys</h2>
 
-<p><code>type: mysql</code></p>
+<p><code>type: redis</code></p>
 
 <ul>
 <li><code>mode</code> - Redis dump mode, default: <code>sync</code>
@@ -89,8 +89,8 @@
 <li><code>sync</code> - For remote Redis server use sync to export.</li>
 <li><code>copy</code> - For local Redis server use copy, just copy Redis <code>dump.db</code></li>
 </ul></li>
-<li><code>host</code> - MySQL server host, default: <code>127.0.0.1</code></li>
-<li><code>port</code> - MySQL server port, default: <code>6379</code></li>
+<li><code>host</code> - Redis server host, default: <code>127.0.0.1</code></li>
+<li><code>port</code> - Redis server port, default: <code>6379</code></li>
 <li><code>invoke_save</code> - Invoke save before backup, default: <code>true</code></li>
 <li><code>password</code> - If your Redis server need, default: &ldquo;</li>
 <li><code>rdb_path</code> - <code>mode: copy</code> need special this config, default: <code>/var/lib/redis/dump.rdb</code></li>
